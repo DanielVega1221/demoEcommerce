@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOIR - Moda Elegante</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+        
+        .font-glamor { 
+            font-family: 'Cinzel', serif; 
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .font-elegant { font-family: 'Cormorant Garamond', serif; }
+        .font-modern { font-family: 'Poppins', sans-serif; }
+        
+        .gradient-gold {
+            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+        }
+        
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+        
+        .flash-animation {
+            animation: flash 2s infinite;
+        }
+        
+        @keyframes flash {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0.7; }
+        }
+        
+        .slide-in {
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+    </style>
+    <style>
+    .product-card {
+        opacity: 0;
+        transform: translateY(40px);
+        border: 2px solid transparent;
+    }
+    .product-card.show {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+    }
+    .product-card:hover {
+        border-color: #FFD700;
+        box-shadow: 0 0 0 2px #FFD70044, 0 8px 32px 0 #0008;
+    }
+    </style>
+</head>
+<body class="bg-gray-900 text-white font-modern">
+    <!-- Header -->
+    <header class="bg-black border-b border-gray-700 sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            
+                <!-- Promo Banner -->
+                <div class="w-full flex justify-center items-center">
+                    <div class="bg-stone-200 text-black text-center px-3 py-0.5 rounded flash-animation shadow max-w-lg w-auto">
+                        <span class="font-semibold text-xs">🔥 MEGA OFERTA: 70% OFF en toda la colección + Envío GRATIS 🔥</span>
+                    </div>
+                </div>
+            </div>
+        <div class="container mx-auto px-4 py-2 flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <img src="assets/logo.png" alt="ValeLaPenaLogo" class="h-12 w-auto" />
+                    <h1 class="font-glamor text-3xl font-bold text-white">Vale la pena</h1>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="text-gray-300 hover:text-white transition-colors">Mujer</a>
+                    <a href="#" class="text-gray-300 hover:text-white transition-colors">Hombre</a>
+                    <a href="#" class="text-gray-300 hover:text-white transition-colors">Ofertas</a>
+                    <a href="#" class="text-gray-300 hover:text-white transition-colors">Nueva Colección</a>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <button class="text-gray-300 hover:text-white transition-colors" aria-label="Buscar">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6"><circle cx="11" cy="11" r="7" stroke-width="2"/><path stroke-width="2" d="M21 21l-3.5-3.5"/></svg>
+                    </button>
+                    <button class="text-gray-300 hover:text-white transition-colors" aria-label="Favoritos">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </button>
+                    <button class="text-gray-300 hover:text-white transition-colors relative" aria-label="Carrito">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2zM7.16 16h9.45c.75 0 1.41-.41 1.75-1.03l3.24-5.88a1 1 0 0 0-.89-1.47H6.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44C4.52 19.37 5.48 21 7 21h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.24-5.88a1 1 0 0 0-.89-1.47H6.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44C4.52 19.37 5.48 21 7 21h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63z"/></svg>
+                        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
+                    </button>
+                </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-96 flex items-center justify-center overflow-hidden">
+        <!-- Fondo con imagen y overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="assets/fondo1.jpg" alt="Fondo elegancia" class="w-full h-full object-cover object-center" />
+            <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,0.7),rgba(0,0,0,0.3));"></div>
+        </div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-2xl">
+                <h2 class="font-elegant text-6xl font-bold mb-4 text-white">Elegancia <span class="text-stone-200">Redefinida</span></h2>
+                <p class="font-glamor text-xl text-stone-200 mb-2 tracking-widest">"La sofisticación es un arte, vívela cada día."</p>
+                <p class="text-xl mb-6 text-gray-300">Descubre nuestra colección exclusiva con descuentos increíbles</p>
+                <button class="bg-stone-200 text-black px-8 py-3 rounded-lg font-semibold hover-scale hover:bg-stone-300">
+                    COMPRAR AHORA - 70% OFF
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ofertas Especiales -->
+    <section class="py-12 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h3 class="font-glamor text-3xl font-bold text-center mb-8 text-white">🎯 Ofertas Especiales</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-stone-300 text-black p-6 rounded-lg text-center hover-scale font-elegant">
+                    <h4 class="font-glamor text-2xl font-bold mb-2">FLASH SALE</h4>
+                    <p class="text-4xl font-bold font-modern">80% OFF</p>
+                    <p class="mt-2">Solo por 24 horas</p>
+                    <div class="mt-4 text-sm">⏰ Termina en: <span id="countdown" class="font-bold">23:45:12</span></div>
+                </div>
+                <div class="bg-stone-300 text-black p-6 rounded-lg text-center hover-scale font-elegant">
+                    <h4 class="font-glamor text-2xl font-bold mb-2">COMPRA 2</h4>
+                    <p class="text-4xl font-bold font-modern">LLEVA 3</p>
+                    <p class="mt-2">En toda la tienda</p>
+                </div>
+                <div class="bg-stone-300 text-black p-6 rounded-lg text-center hover-scale font-elegant">
+                    <h4 class="font-glamor text-2xl font-bold mb-2">ENVÍO GRATIS</h4>
+                    <p class="text-4xl font-bold font-modern">$0</p>
+                    <p class="mt-2">En compras +$50</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productos Destacados -->
+    <section class="py-12 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h3 class="font-glamor text-3xl font-bold text-center mb-8 text-white">Productos Destacados</h3>
+            <div class="grid md:grid-cols-4 gap-6" id="products-grid">
+                <!-- Los productos se generarán dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-12 bg-gray-800">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="font-elegant text-4xl font-bold mb-4 text-white">Suscríbete y Obtén 15% OFF Extra</h3>
+            <p class="text-gray-300 mb-6">Recibe ofertas exclusivas y novedades antes que nadie</p>
+            <div class="max-w-md mx-auto flex">
+                <input type="email" placeholder="Tu email" class="flex-1 px-4 py-3 bg-gray-700 border border-gray-600 text-white placeholder-gray-400 rounded-l-lg focus:outline-none focus:border-stone-300">
+                <button class="bg-stone-200 text-black px-6 py-3 rounded-r-lg font-semibold hover-scale hover:bg-stone-300">
+                    SUSCRIBIRSE
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-gray-700 py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                        <div class="flex flex-col items-center mb-4">
+                            <img src="assets/logo.png" alt="Logo Vale la pena" class="h-16 w-auto mb-2" />
+                            <h4 class="font-glamor text-xl font-bold text-white text-center">Vale la pena</h4>
+                        </div>
+                    <p class="text-gray-400">Moda elegante para personas exigentes</p>
+                </div>
+                <div>
+                    <h5 class="font-glamor font-semibold mb-4 text-white">Comprar</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Mujer</a></li>
+                        <li><a href="#" class="hover:text-white">Hombre</a></li>
+                        <li><a href="#" class="hover:text-white">Accesorios</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-glamor font-semibold mb-4 text-white">Ayuda</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Contacto</a></li>
+                        <li><a href="#" class="hover:text-white">Envíos</a></li>
+                        <li><a href="#" class="hover:text-white">Devoluciones</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-semibold mb-4 text-white">Síguenos</h5>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-2xl hover:text-stone-200" aria-label="WhatsApp">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-7 h-7 inline"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.85.504 3.59 1.38 5.08L2 22l5.09-1.36A9.953 9.953 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18c-1.61 0-3.13-.39-4.45-1.08l-.32-.17-3.02.8.81-2.95-.21-.33A7.96 7.96 0 0 1 4 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8zm4.13-5.47c-.23-.12-1.36-.67-1.57-.75-.21-.08-.36-.12-.51.12-.15.23-.58.75-.71.9-.13.15-.26.17-.49.06-.23-.12-.97-.36-1.85-1.13-.68-.6-1.14-1.34-1.28-1.57-.13-.23-.01-.35.1-.46.1-.1.23-.26.34-.39.11-.13.15-.23.23-.38.08-.15.04-.28-.02-.4-.06-.12-.51-1.23-.7-1.68-.18-.44-.37-.38-.51-.39-.13-.01-.28-.01-.43-.01-.15 0-.4.06-.61.28-.21.22-.8.78-.8 1.9 0 1.12.82 2.2.94 2.35.12.15 1.61 2.46 3.91 3.36.55.24.98.38 1.31.49.55.18 1.05.15 1.44.09.44-.07 1.36-.56 1.55-1.1.19-.54.19-1 .13-1.1-.06-.1-.21-.16-.44-.28z"/></svg>
+                        </a>
+                        <a href="#" class="text-2xl hover:text-stone-200" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-7 h-7 inline"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm4.25 2.25a6.25 6.25 0 1 1 0 12.5 6.25 6.25 0 0 1 0-12.5zm0 1.5a4.75 4.75 0 1 0 0 9.5 4.75 4.75 0 0 0 0-9.5zm6.13 1.12a1.13 1.13 0 1 1-2.25 0 1.13 1.13 0 0 1 2.25 0z"/></svg>
+                        </a>
+                        <a href="#" class="text-2xl hover:text-stone-200" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-7 h-7 inline"><path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Productos de ejemplo
+        const products = [
+            {
+                id: 1,
+                name: "Blazer Elegante Negro",
+                price: 299,
+                originalPrice: 599,
+                discount: 50,
+                image: "Abrigo de Lujo.jpg",
+                badge: "BESTSELLER"
+            },
+            {
+                id: 2,
+                name: "Vestido Cocktail",
+                price: 199,
+                originalPrice: 399,
+                discount: 50,
+                image: "Vestido Cocktail.webp",
+                badge: "NUEVO"
+            },
+            {
+                id: 3,
+                name: "Camisa Premium",
+                price: 89,
+                originalPrice: 179,
+                discount: 50,
+                image: "Camisa Premium.jpg",
+                badge: "OFERTA"
+            },
+            {
+                id: 4,
+                name: "Pantalón Ejecutivo",
+                price: 149,
+                originalPrice: 299,
+                discount: 50,
+                image: "Pantalón Ejecutivo.jpg",
+                badge: "LIMITADO"
+            },
+            {
+                id: 5,
+                name: "Abrigo de Lujo",
+                price: 399,
+                originalPrice: 799,
+                discount: 50,
+                image: "Blazer Elegante Negro.jpg",
+                badge: "PREMIUM"
+            },
+            {
+                id: 6,
+                name: "Zapatos Oxford",
+                price: 179,
+                originalPrice: 359,
+                discount: 50,
+                image: "Zapatos Oxford.jpg",
+                badge: "CLÁSICO"
+            },
+            {
+                id: 7,
+                name: "Bolso Ejecutivo",
+                price: 129,
+                originalPrice: 259,
+                discount: 50,
+                image: "Bolso Ejecutivo.jpg",
+                badge: "TENDENCIA"
+            },
+            {
+                id: 8,
+                name: "Reloj Elegante",
+                price: 249,
+                originalPrice: 499,
+                discount: 50,
+                image: "Reloj Elegante.jpg",
+                badge: "EXCLUSIVO"
+            }
+        ];
+
+        // Renderizar productos
+        function renderProducts() {
+            const grid = document.getElementById('products-grid');
+            grid.innerHTML = products.map(product => `
+                <div class="bg-gray-800 border border-gray-700 rounded-lg overflow-hidden hover-scale group shadow-lg product-card transition-all duration-300">
+                    <div class="relative p-8 bg-gray-700 text-center">
+                        <div class="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded text-xs font-bold">
+                            ${product.badge}
+                        </div>
+                        <div class="absolute top-2 right-2 bg-stone-200 text-black px-2 py-1 rounded text-xs font-bold">
+                            -${product.discount}%
+                        </div>
+                        <div class="mb-4 flex justify-center items-center h-40">
+                            <img src="assets/${product.image}" alt="${product.name}" class="object-contain h-full max-w-full rounded shadow" />
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-elegant font-semibold mb-2 text-white text-lg">${product.name}</h4>
+                        <div class="flex items-center justify-between mb-3">
+                            <div>
+                                <span class="text-stone-200 font-bold text-lg">$${product.price}</span>
+                                <span class="text-gray-500 line-through ml-2">$${product.originalPrice}</span>
+                            </div>
+                        </div>
+                        <button onclick="addToCart(${product.id})" class="w-full bg-stone-200 text-black py-2 rounded font-semibold hover-scale hover:bg-stone-300">
+                            AGREGAR AL CARRITO
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Agregar al carrito
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            alert(`¡${product.name} agregado al carrito! 🛒`);
+            
+            // Animación del botón del carrito
+            const cartButton = document.querySelector('button[class*="🛒"]');
+            cartButton.classList.add('animate-bounce');
+            setTimeout(() => cartButton.classList.remove('animate-bounce'), 1000);
+        }
+
+        // Countdown timer
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            tomorrow.setHours(0, 0, 0, 0);
+            
+            const distance = tomorrow - now;
+            
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('countdown').innerHTML = 
+                `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        // Inicializar
+        renderProducts();
+        // Animación de entrada para las cards de producto
+        setTimeout(() => {
+            document.querySelectorAll('.product-card').forEach((el, i) => {
+                setTimeout(() => el.classList.add('show'), i * 120);
+            });
+        }, 200);
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Animaciones de entrada
+        window.addEventListener('load', () => {
+            const elements = document.querySelectorAll('.hover-scale');
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('slide-in');
+                }, index * 100);
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'974b1e6bb0492376',t:'MTc1NjEyNTIxNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
