@@ -66,28 +66,26 @@
 </head>
 <body class="bg-gray-900 text-white font-modern">
     <!-- Header -->
-    <header class="bg-black border-b border-gray-700 sticky top-0 z-50 shadow-lg">
-        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
-            
-                <!-- Promo Banner -->
-                <div class="w-full flex justify-center items-center">
-                    <div class="bg-stone-200 text-black text-center px-3 py-0.5 rounded flash-animation shadow max-w-lg w-auto">
-                        <span class="font-semibold text-xs">🔥 MEGA OFERTA: 70% OFF en toda la colección + Envío GRATIS 🔥</span>
-                    </div>
+    <header class="bg-black border-b border-gray-700 shadow-lg">
+        <div class="container mx-auto px-2 py-2 flex flex-col gap-1">
+            <!-- Promo Banner -->
+            <div class="w-full flex justify-center items-center">
+                <div class="bg-stone-200 text-black text-center px-2 py-0.5 rounded flash-animation shadow max-w-lg w-full">
+                    <span class="font-semibold text-xs">🔥 MEGA OFERTA: 70% OFF en toda la colección + Envío GRATIS 🔥</span>
                 </div>
             </div>
-        <div class="container mx-auto px-4 py-2 flex items-center justify-between">
-                <div class="flex items-center gap-4">
-                    <img src="assets/logo.png" alt="ValeLaPenaLogo" class="h-12 w-auto" />
-                    <h1 class="font-glamor text-3xl font-bold text-white">Vale la pena</h1>
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 w-full">
+                <div class="flex items-center gap-2 sm:gap-4 justify-center sm:justify-start">
+                    <img src="assets/logo.png" alt="ValeLaPenaLogo" class="h-10 w-auto sm:h-12" />
+                    <h1 class="font-glamor text-2xl sm:text-3xl font-bold text-white">Vale la pena</h1>
                 </div>
-                <nav class="hidden md:flex space-x-8">
+                <nav class="flex flex-wrap justify-center gap-4 md:gap-8 my-2 sm:my-0">
                     <a href="#" class="text-gray-300 hover:text-white transition-colors">Mujer</a>
                     <a href="#" class="text-gray-300 hover:text-white transition-colors">Hombre</a>
                     <a href="#" class="text-gray-300 hover:text-white transition-colors">Ofertas</a>
                     <a href="#" class="text-gray-300 hover:text-white transition-colors">Nueva Colección</a>
                 </nav>
-                <div class="flex items-center space-x-4">
+                <div class="flex items-center justify-center sm:justify-end space-x-2 sm:space-x-4">
                     <button class="text-gray-300 hover:text-white transition-colors" aria-label="Buscar">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6"><circle cx="11" cy="11" r="7" stroke-width="2"/><path stroke-width="2" d="M21 21l-3.5-3.5"/></svg>
                     </button>
@@ -99,6 +97,7 @@
                         <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
                     </button>
                 </div>
+            </div>
         </div>
     </header>
 
@@ -110,11 +109,11 @@
             <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,0.7),rgba(0,0,0,0.3));"></div>
         </div>
         <div class="container mx-auto px-4 relative z-10">
-            <div class="max-w-2xl">
-                <h2 class="font-elegant text-6xl font-bold mb-4 text-white">Elegancia <span class="text-stone-200">Redefinida</span></h2>
+            <div class="max-w-2xl text-center mx-auto">
+                <h2 class="font-elegant text-4xl sm:text-6xl font-bold mb-4 text-white">Elegancia <span class="text-stone-200">Redefinida</span></h2>
                 <p class="font-glamor text-xl text-stone-200 mb-2 tracking-widest">"La sofisticación es un arte, vívela cada día."</p>
                 <p class="text-xl mb-6 text-gray-300">Descubre nuestra colección exclusiva con descuentos increíbles</p>
-                <button class="bg-stone-200 text-black px-8 py-3 rounded-lg font-semibold hover-scale hover:bg-stone-300">
+                <button class="bg-stone-200 text-black px-8 py-3 rounded-lg font-semibold hover-scale hover:bg-stone-300 mx-auto block">
                     COMPRAR AHORA - 70% OFF
                 </button>
             </div>
@@ -150,7 +149,7 @@
     <section class="py-12 bg-gray-900">
         <div class="container mx-auto px-4">
             <h3 class="font-glamor text-3xl font-bold text-center mb-8 text-white">Productos Destacados</h3>
-            <div class="grid md:grid-cols-4 gap-6" id="products-grid">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="products-grid">
                 <!-- Los productos se generarán dinámicamente -->
             </div>
         </div>
@@ -162,24 +161,25 @@
             <h3 class="font-elegant text-4xl font-bold mb-4 text-white">Suscríbete y Obtén 15% OFF Extra</h3>
             <p class="text-gray-300 mb-6">Recibe ofertas exclusivas y novedades antes que nadie</p>
             <div class="max-w-md mx-auto flex">
-                <input type="email" placeholder="Tu email" class="flex-1 px-4 py-3 bg-gray-700 border border-gray-600 text-white placeholder-gray-400 rounded-l-lg focus:outline-none focus:border-stone-300">
-                <button class="bg-stone-200 text-black px-6 py-3 rounded-r-lg font-semibold hover-scale hover:bg-stone-300">
-                    SUSCRIBIRSE
-                </button>
+                <form class="w-full flex flex-col sm:flex-row gap-2 sm:gap-0">
+                    <input type="email" placeholder="Tu email" class="flex-1 px-4 py-3 bg-gray-700 border border-gray-600 text-white placeholder-gray-400 rounded-t-lg sm:rounded-l-lg sm:rounded-tr-none sm:rounded-tl-lg focus:outline-none focus:border-stone-300" />
+                    <button type="submit" class="bg-stone-200 text-black px-6 py-3 rounded-b-lg sm:rounded-r-lg sm:rounded-bl-none sm:rounded-br-lg font-semibold hover-scale hover:bg-stone-300 w-full sm:w-auto">
+                        SUSCRIBIRSE
+                    </button>
+                </form>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="bg-black border-t border-gray-700 py-8">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-4 gap-8">
+    <div class="container mx-auto px-2 sm:px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
                 <div>
                         <div class="flex flex-col items-center mb-4">
                             <img src="assets/logo.png" alt="Logo Vale la pena" class="h-16 w-auto mb-2" />
                             <h4 class="font-glamor text-xl font-bold text-white text-center">Vale la pena</h4>
                         </div>
-                    <p class="text-gray-400">Moda elegante para personas exigentes</p>
                 </div>
                 <div>
                     <h5 class="font-glamor font-semibold mb-4 text-white">Comprar</h5>
@@ -199,7 +199,7 @@
                 </div>
                 <div>
                     <h5 class="font-semibold mb-4 text-white">Síguenos</h5>
-                    <div class="flex space-x-4">
+                    <div class="flex justify-center md:justify-start space-x-4">
                         <a href="#" class="text-2xl hover:text-stone-200" aria-label="WhatsApp">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-7 h-7 inline"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.85.504 3.59 1.38 5.08L2 22l5.09-1.36A9.953 9.953 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18c-1.61 0-3.13-.39-4.45-1.08l-.32-.17-3.02.8.81-2.95-.21-.33A7.96 7.96 0 0 1 4 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8zm4.13-5.47c-.23-.12-1.36-.67-1.57-.75-.21-.08-.36-.12-.51.12-.15.23-.58.75-.71.9-.13.15-.26.17-.49.06-.23-.12-.97-.36-1.85-1.13-.68-.6-1.14-1.34-1.28-1.57-.13-.23-.01-.35.1-.46.1-.1.23-.26.34-.39.11-.13.15-.23.23-.38.08-.15.04-.28-.02-.4-.06-.12-.51-1.23-.7-1.68-.18-.44-.37-.38-.51-.39-.13-.01-.28-.01-.43-.01-.15 0-.4.06-.61.28-.21.22-.8.78-.8 1.9 0 1.12.82 2.2.94 2.35.12.15 1.61 2.46 3.91 3.36.55.24.98.38 1.31.49.55.18 1.05.15 1.44.09.44-.07 1.36-.56 1.55-1.1.19-.54.19-1 .13-1.1-.06-.1-.21-.16-.44-.28z"/></svg>
                         </a>
@@ -373,4 +373,3 @@
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'974b1e6bb0492376',t:'MTc1NjEyNTIxNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
-
